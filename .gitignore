@@ -1,0 +1,8 @@
+folders.json
+configuration.json
+
+.cache
+__pycache__
+
+.idea
+*.iml
