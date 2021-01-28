@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     os.environ['SPOTIPY_CLIENT_ID'] = configuration['client_id']
     os.environ['SPOTIPY_CLIENT_SECRET'] = configuration['client_secret']
-    os.environ['SPOTIPY_REDIRECT_URI'] = 'localhost'
+    os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost'
 
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
