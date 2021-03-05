@@ -41,7 +41,9 @@ def get_playlist(sp, name):
             if playlist['name'] == name:
                 return playlist['id']
 
-    return sp.user_playlist_create(sp.current_user()['id'], name)['id']
+    playlist_id = sp.user_playlist_create(sp.current_user()['id'], name)['id']
+    sp.playlist_change_details(playlist_id, public=False);
+    return playlist_id;
 
 
 def playlist_constructor(sp, parsed_playlists):
