@@ -21,8 +21,14 @@ def add_missing_tracks(sp, playlist_id, final_tracks):
 
 
 def remove_additional_tracks(sp, playlist_id, final_tracks):
-    current_tracks = sp.playlist_tracks(playlist_id, fields="items")
-    for track in current_tracks['items']:
+    tracks = []
+    result = sp.playlist_tracks(playlist_id)
+    tracks.extend(result['items'])
+    while result['next']:
+        result = sp.next(result)
+        tracks.extend(result['items'])
+
+    for track in tracks:
         if track['track']['id'] not in final_tracks:
             sp.playlist_remove_all_occurrences_of_items(playlist_id, [track['track']['id']])
 
